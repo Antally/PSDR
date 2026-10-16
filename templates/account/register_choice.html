@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="fw-bold text-center mb-4">Create an account</h2>
+  <div class="row g-3 justify-content-center">
+    <div class="col-md-4"><a href="{% url 'accounts:register_driver' %}" class="btn btn-primary w-100 p-4">🚗 Driver</a></div>
+    <div class="col-md-4"><a href="{% url 'accounts:register_owner' %}" class="btn btn-warning w-100 p-4">🏢 Parking Owner</a></div>
+    <div class="col-md-4"><a href="{% url 'accounts:register_event_host' %}" class="btn btn-success w-100 p-4">🎉 Event Hoster</a></div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+  <h1>{{ site.name }}</h1>
+  <p class="text-muted">{{ site.address }}</p>
+  <p>{{ slots.count }} slots total</p>
+</div>
+{% endblock %}

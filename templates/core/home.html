@@ -1,0 +1,409 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}PSDR — Smart Parking in Kigali{% endblock %}
+
+{% block content %}
+
+<!-- ============================================================
+     1. HERO
+     ============================================================ -->
+<section class="psdr-hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7 psdr-fade-in">
+        <span class="psdr-badge">
+          <span class="psdr-badge-dot"></span>
+          Live in {{ SITE_CITY }}
+        </span>
+        <h1 class="psdr-hero-title">
+  Stop circling.<br>
+  <span style="background:linear-gradient(135deg,var(--psdr-primary),#8b5cf6);-webkit-background-clip:text;">
+    Start parking smarter.
+  </span>
+</h1>
+        <p class="psdr-hero-sub">
+          {{ SITE_FULL }} — real-time slot detection across Kigali's busiest buildings.
+          From Amahoro Stadium to Kimironko Market, book the exact slot you want,
+          pay with MoMo or Airtel Money, and drive in without the hassle.
+        </p>
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <a href="{% url 'accounts:register_driver' %}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-car-front-fill me-2"></i> Book a Slot
+          </a>
+          <a href="{% url 'accounts:register_owner' %}" class="btn btn-outline-primary btn-lg px-4">
+            <i class="bi bi-building me-2"></i> List Your Parking
+          </a>
+        </div>
+        <div class="d-flex flex-wrap gap-4 text-muted small">
+          <span><i class="bi bi-check-circle-fill text-success"></i> No hidden fees</span>
+          <span><i class="bi bi-check-circle-fill text-success"></i> 15-min expiry alert</span>
+          <span><i class="bi bi-check-circle-fill text-success"></i> MoMo & Airtel</span>
+        </div>
+      </div>
+
+      <div class="col-lg-5 psdr-fade-in">
+        <div class="psdr-live-map" style="aspect-ratio:4/3;">
+          <div class="psdr-pin" style="top:25%;left:30%;" title="CHIC Building">1</div>
+          <div class="psdr-pin" style="top:45%;left:60%;" title="Kigali Heights">2</div>
+          <div class="psdr-pin" style="top:65%;left:35%;" title="Union Trade Centre">3</div>
+          <div class="psdr-pin" style="top:55%;left:80%;" title="Amahoro Stadium">4</div>
+          <div class="psdr-pin" style="top:75%;left:55%;" title="Kimironko Market">5</div>
+          <div class="position-absolute bottom-0 start-0 end-0 p-3"
+               style="background:linear-gradient(transparent,var(--psdr-surface));">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <div class="fw-bold">Live slot availability</div>
+                <div class="small text-muted">{{ stats.free }} slots free right now</div>
+              </div>
+              <a href="{% url 'parking:site_list' %}" class="btn btn-sm btn-primary">
+                Explore map <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="psdr-stats psdr-fade-in">
+      <div class="psdr-stat-card">
+        <div class="psdr-stat-value" data-counter="{{ stats.sites }}">0</div>
+        <div class="psdr-stat-label">Parking Sites</div>
+      </div>
+      <div class="psdr-stat-card">
+        <div class="psdr-stat-value" data-counter="{{ stats.slots }}">0</div>
+        <div class="psdr-stat-label">Total Slots</div>
+      </div>
+      <div class="psdr-stat-card">
+        <div class="psdr-stat-value" data-counter="{{ stats.free }}">0</div>
+        <div class="psdr-stat-label">Free Right Now</div>
+      </div>
+      <div class="psdr-stat-card">
+        <div class="psdr-stat-value" data-counter="{{ stats.drivers }}">0</div>
+        <div class="psdr-stat-label">Registered Drivers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     2. TRUSTED BY / LOGOS
+     ============================================================ -->
+<section class="py-5" style="background:var(--psdr-surface);border-top:1px solid var(--psdr-border);border-bottom:1px solid var(--psdr-border);">
+  <div class="container">
+    <div class="text-center mb-4 small text-muted text-uppercase" style="letter-spacing:.15em;">
+      Trusted by drivers, hosts & businesses across Kigali
+    </div>
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3"><div class="fw-bold" style="font-size:1.15rem;"><i class="bi bi-building me-1"></i> CHIC Building</div></div>
+      <div class="col-6 col-md-3"><div class="fw-bold" style="font-size:1.15rem;"><i class="bi bi-building me-1"></i> Kigali Heights</div></div>
+      <div class="col-6 col-md-3"><div class="fw-bold" style="font-size:1.15rem;"><i class="bi bi-trophy me-1"></i> Amahoro Stadium</div></div>
+      <div class="col-6 col-md-3"><div class="fw-bold" style="font-size:1.15rem;"><i class="bi bi-shop me-1"></i> Kimironko Market</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. FEATURES
+     ============================================================ -->
+<section class="psdr-section">
+  <div class="container">
+    <div class="text-center psdr-fade-in">
+      <div class="psdr-section-eyebrow">Why PSDR</div>
+      <h2 class="psdr-section-title">Everything a modern parking system should be</h2>
+      <p class="psdr-section-sub">
+        Built for Rwanda's busiest venues. Live detection, honest pricing, MoMo-ready payments, and a driver dashboard that actually helps.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 psdr-fade-in">
+        <div class="psdr-card">
+          <div class="psdr-card-icon"><i class="bi bi-radar"></i></div>
+          <div class="psdr-card-title">Real-time slot detection</div>
+          <p class="psdr-card-text">Sensors and scan logs keep each slot's status live. No more guessing if there is space.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 psdr-fade-in">
+        <div class="psdr-card">
+          <div class="psdr-card-icon"><i class="bi bi-credit-card-2-front"></i></div>
+          <div class="psdr-card-title">MoMo & Airtel payments</div>
+          <p class="psdr-card-text">Pay for your slot in seconds. Extend your stay with a single tap when you are on the road.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 psdr-fade-in">
+        <div class="psdr-card">
+          <div class="psdr-card-icon"><i class="bi bi-alarm"></i></div>
+          <div class="psdr-card-title">15-minute expiry alert</div>
+          <p class="psdr-card-text">We warn you exactly 15 minutes before your booking ends, with an extend option.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 psdr-fade-in">
+        <div class="psdr-card">
+          <div class="psdr-card-icon"><i class="bi bi-shield-lock"></i></div>
+          <div class="psdr-card-title">Categories that matter</div>
+          <p class="psdr-card-text">Economic, Business, Premium. Pay only for the safety and services you actually use.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 psdr-fade-in">
+        <div class="psdr-card">
+          <div class="psdr-card-icon"><i class="bi bi-camera-video"></i></div>
+          <div class="psdr-card-title">Plate scan entry & exit</div>
+          <p class="psdr-card-text">Camera scans your plate on the way in and out. Slots free themselves automatically.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 psdr-fade-in">
+        <div class="psdr-card">
+          <div class="psdr-card-icon"><i class="bi bi-people"></i></div>
+          <div class="psdr-card-title">Built for events too</div>
+          <p class="psdr-card-text">Event hosters can bulk-book entire parkings and offer shuttle transport from pickup points.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. CATEGORIES
+     ============================================================ -->
+<section class="psdr-section" style="background:var(--psdr-surface-2);">
+  <div class="container">
+    <div class="text-center psdr-fade-in">
+      <div class="psdr-section-eyebrow">Categories</div>
+      <h2 class="psdr-section-title">Choose the level of comfort you need</h2>
+      <p class="psdr-section-sub">Each category adds a small hourly fee on top of the vehicle base rate.</p>
+    </div>
+
+    <div class="row g-4">
+      {% for c in categories %}
+      <div class="col-md-4 psdr-fade-in">
+        <div class="psdr-card cat-{{ c.key }}">
+          <div class="psdr-card-icon"><i class="bi {{ c.icon }}"></i></div>
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+              <div class="psdr-card-title">{{ c.name }}</div>
+              <div class="small text-muted">{{ c.tagline }}</div>
+            </div>
+            <div class="text-end">
+              <div class="fw-bold" style="font-size:1.4rem;">+{{ c.price|floatformat:0 }}</div>
+              <div class="small text-muted">RWF/hour</div>
+            </div>
+          </div>
+          <ul class="list-unstyled mt-3 mb-0">
+            {% for f in c.features %}
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>{{ f }}</li>
+            {% endfor %}
+          </ul>
+          <a href="{% url 'accounts:register_driver' %}" class="btn btn-outline-primary w-100 mt-3">
+            Choose {{ c.name }} <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. VEHICLE TYPES TABLE
+     ============================================================ -->
+<section class="psdr-section">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5 psdr-fade-in">
+        <div class="psdr-section-eyebrow">Pricing</div>
+        <h2 class="psdr-section-title">Fair pricing by vehicle size</h2>
+        <p class="text-muted">
+          We charge by vehicle size because a heavy lorry takes much more space than a sedan.
+          Add a category fee on top for extra security and services.
+        </p>
+        <a href="{% url 'core:pricing' %}" class="btn btn-primary mt-2">
+          See full pricing <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="col-lg-7 psdr-fade-in">
+        <div class="psdr-table-wrap">
+          <table class="psdr-table">
+            <thead>
+              <tr>
+                <th>Vehicle Type</th>
+                <th>Base Price / Hour</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for v in vehicle_rows %}
+                <tr>
+                  <td><i class="bi {{ v.icon }} me-2"></i>{{ v.name }}</td>
+                  <td class="fw-bold">{{ v.base|floatformat:0 }} RWF</td>
+                  <td class="text-muted">+ category add-on</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. HOW IT WORKS
+     ============================================================ -->
+<section class="psdr-section" id="how-it-works" style="background:var(--psdr-surface);">
+  <div class="container">
+    <div class="text-center psdr-fade-in">
+      <div class="psdr-section-eyebrow">How It Works</div>
+      <h2 class="psdr-section-title">From sign-up to parked in 5 easy steps</h2>
+      <p class="psdr-section-sub">Every step in PSDR is designed to take seconds, not minutes.</p>
+    </div>
+
+    <div class="row g-3">
+      {% for s in steps %}
+        <div class="col-md-6 col-lg-4 psdr-fade-in">
+          <div class="psdr-step">
+            <div class="psdr-step-num">{{ s.n }}</div>
+            <div>
+              <div class="fw-bold mb-1"><i class="bi {{ s.icon }} me-1 text-primary"></i> {{ s.title }}</div>
+              <div class="small text-muted">{{ s.text }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<<!-- ============================================================
+     7. LIVE REVIEWS — from real users, on the homepage
+     ============================================================ -->
+<section class="psdr-section" id="testimonials">
+  <div class="container">
+    <div class="text-center psdr-fade-in">
+      <div class="psdr-section-eyebrow">What users say</div>
+      <h2 class="psdr-section-title">Real reviews, straight from our community</h2>
+      <p class="psdr-section-sub">Any registered user can post a review — it appears here instantly.</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+      {% for r in live_reviews %}
+        <div class="col-md-6 col-lg-3 psdr-fade-in">
+          <div class="psdr-testimonial">
+            <div class="psdr-stars">
+              {% for _ in "12345"|slice:":{{ r.rating }}" %}<i class="bi bi-star-fill"></i>{% endfor %}
+              {% for _ in "12345"|slice:"{{ r.rating }}:" %}<i class="bi bi-star"></i>{% endfor %}
+            </div>
+            <p class="small mb-3">"{{ r.comment|default:"Great experience!" }}"</p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="psdr-avatar">{{ r.driver.first_name|default:r.driver.username|first|upper }}</div>
+              <div>
+                <div class="fw-bold small">{{ r.driver.first_name|default:r.driver.username }}</div>
+                <div class="small text-muted">{{ r.created_at|date:"M d, Y" }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12 text-center text-muted">
+          <p>No reviews yet — be the first to share your experience!</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Review submission -->
+    <div class="row justify-content-center psdr-fade-in">
+      <div class="col-lg-7">
+        <div class="psdr-card">
+          <div class="psdr-card-title mb-3">
+            <i class="bi bi-pencil-square text-primary"></i> Leave your review
+          </div>
+          {% if user.is_authenticated %}
+            <form method="post">
+              {% csrf_token %}
+              <label class="form-label fw-bold">Your rating</label>
+              <div class="psdr-star-input mb-3">
+                {% for i in "12345" %}
+                  <label>
+                    <input type="radio" name="rating" value="{{ forloop.counter }}" required>
+                    <i class="bi bi-star-fill"></i>
+                  </label>
+                {% endfor %}
+              </div>
+              <label class="form-label fw-bold">Your comment</label>
+              <textarea name="comment" rows="4" class="form-control mb-3"
+                        placeholder="Share your experience with PSDR..."></textarea>
+              <button class="btn btn-primary">
+                <i class="bi bi-send me-2"></i> Post Review
+              </button>
+            </form>
+          {% else %}
+            <p class="text-muted mb-3">
+              You need a free account to post a review.
+            </p>
+            <a href="{% url 'accounts:register_choice' %}" class="btn btn-primary">
+              <i class="bi bi-person-plus me-2"></i> Create free account
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============================================================
+     8. FAQ
+     ============================================================ -->
+<section class="psdr-section" id="faq" style="background:var(--psdr-surface-2);">
+  <div class="container">
+    <div class="text-center psdr-fade-in">
+      <div class="psdr-section-eyebrow">FAQ</div>
+      <h2 class="psdr-section-title">Questions, answered</h2>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9 psdr-fade-in">
+        <div class="accordion" id="faqAccordion">
+          {% for f in faqs %}
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}"
+                        type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faq{{ forloop.counter }}">
+                  {{ f.q }}
+                </button>
+              </h2>
+              <div id="faq{{ forloop.counter }}"
+                   class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                   data-bs-parent="#faqAccordion">
+                <div class="accordion-body">{{ f.a }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. BIG CTA
+     ============================================================ -->
+<section class="pb-5">
+  <div class="container">
+    <div class="psdr-cta psdr-fade-in">
+      <h2>Ready to never circle the block again?</h2>
+      <p>Join thousands of drivers already using PSDR across Kigali.</p>
+      <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <a href="{% url 'accounts:register_driver' %}" class="btn btn-light btn-lg">
+          <i class="bi bi-person-plus me-2"></i> Create Driver Account
+        </a>
+        <a href="{% url 'accounts:register_owner' %}" class="btn btn-outline-light btn-lg">
+          <i class="bi bi-building me-2"></i> List Your Parking
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

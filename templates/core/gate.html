@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign up to continue — PSDR{% endblock %}
+
+{% block content %}
+<section class="psdr-section" style="min-height:70vh;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="psdr-card text-center p-5">
+          <div class="psdr-card-icon mx-auto" style="width:80px;height:80px;font-size:2rem;">
+            <i class="bi bi-lock-fill"></i>
+          </div>
+          <h2 class="fw-bold mb-3">{{ gate_title }}</h2>
+          <p class="text-muted mb-4">{{ gate_message }}</p>
+
+          <div class="row g-3 text-start mb-4">
+            <div class="col-md-6">
+              <div class="d-flex gap-2">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <div>
+                  <div class="fw-bold small">Free sign-up</div>
+                  <div class="small text-muted">No card needed</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex gap-2">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <div>
+                  <div class="fw-bold small">MoMo & Airtel</div>
+                  <div class="small text-muted">Pay in seconds</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex gap-2">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <div>
+                  <div class="fw-bold small">15-min alert</div>
+                  <div class="small text-muted">Never overstay</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex gap-2">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <div>
+                  <div class="fw-bold small">Loyalty rewards</div>
+                  <div class="small text-muted">Free hours with usage</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <a href="{% url 'accounts:register_choice' %}" class="btn btn-primary btn-lg">
+              <i class="bi bi-person-plus me-2"></i> Create Account
+            </a>
+            <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary btn-lg">
+              <i class="bi bi-box-arrow-in-right me-2"></i> I already have one
+            </a>
+          </div>
+
+          <hr class="my-4">
+          <p class="small text-muted mb-0">
+            By continuing you agree to our <a href="{% url 'core:terms' %}">Terms</a>
+            and <a href="{% url 'core:terms' %}">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+<div class="psdr-promo-bar">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3 overflow-hidden">
+      <span class="badge bg-warning text-dark fw-bold flex-shrink-0">
+        <i class="bi bi-megaphone-fill"></i> OFFERS
+      </span>
+      <div class="psdr-promo-scroll flex-grow-1">
+        <div class="psdr-promo-track">
+          {% for promo in promos %}
+            <span class="psdr-promo-item">
+              <i class="bi {{ promo.icon }} text-primary me-1"></i>
+              <strong>{{ promo.title }}</strong>
+              <span class="text-muted ms-2">— {{ promo.subtitle }}</span>
+            </span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
