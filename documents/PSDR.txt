@@ -1,0 +1,49 @@
+SMART PARKING SPACE DETECTION & RESERVATION
+
+this is a system that held by main 4 users which include; (drivers, event hoster ) those are main clients (parking owners And super admin.) those are administrators of system
+breakdown the specific functionality for each users:
+
+1. DRIVERS:
+
+driver login with username and password can create an account
+after entering into the system driver can see available slot in specific 
+parking, bookings, check status. 
+parking may be in 4 categories: . primary, secondary, business and premium. 
+categories is based on the safety and vip protections of car parked and some 
+offers or extra services offered (eg; simple car wash in premium). those categories differ for price as usually.
+short scenario, am going to start to with 10 Kigali city most crowded buildings
+or avenue. like Amahoro stadium, CHIC building, Kimironko market, and most places that host many peoples. so an example about driver's action: driver enter in the system see nearest parking area through google api data and AI that check where u're and check nearest parking. so if driver prefer to park in downtown parking, see available slots in all categories, see the status of each slot there in parking, choose the categories he wish, then choose the the car type (spots, SUV, small track  like coaster and Scania or heavy lorry). the price may differ per time car held in the slot. example if  primary price is 15k rwf per hours, add 10k to get price of secondary(25k), 35k to business and 50k to premium. so this price is for first and second car type small one compared to spots car and SUV. for the third car type cz they occupy large area there was 
+extra proportions like +10k to third car type and +20k to rest car type.
+ after driver chose her wishes park there was where to enter entry time and exit time. real time plate scanning to track if real plate book the slot is the one which enter there. driver confirm all requested field confirm the payment there was real time calculations according to the all criteria explained above. after prompted to confirm payment there was a window comes direct that show all parking details  entered to confirm if it is true then confirm. after payment goes successfully, receive a message of  all details.
+if the booked time remains 15mins driver receive notification to notify him the situations if he prefer to extend or if is ready to pull out his car at time.
+above all the driver at landing page there would be some features that sensitize every driver to create an account within the system, this landing page may let new visitors to get some interested things and comparison of some private buildings' parking and those new parking areas established how are different with each parking area.
+ 
+2. PARKING OWNERS:
+
+this is an investors and stakeholders that may be interested in this projects.
+those stakeholders may be a partial admin to this system who monitored his parking site in this system. this is like approving and generating reports and charts and graphics that show occupancy rate and availability status. approve payment and add some slots in case he extends his parking area size.
+this partial owners is the one who monitored his own parking and set his regulations.
+some offers to the client, and special services are provided with this one.
+another smart service is to the event host,  at the level of payment their was an offer of providing collective bus to travel there to where real location of event take place.
+
+3. EVENT HOSTER
+
+those bodies have to book entire parking according to the number of event attendants estimated. and make its own management and decorations or planning its self. the parking  owner pay entire or helps attendants to use it if it is not booked yet. they pay all services at bargained prices. it is not only event it is about entire facilities that may combine together  a lot of peoples.
+
+4. ADMIN
+
+this is overall controller of the system. who schedule the entire functionalities of system, set general rules for system and make sure all partial admin has obeyed all rules. terms and conditions and modifications may be done by him. 
+
+Other aspects required:
+> use phyton language
+>Django framework is what I prefered
+>at least 15 interactive pages that made  up entire  system
+>best site with clear visualization professional dashboard please.
+>more drop-downs, quick settings, pie-chart, hovers, navigations quicker, 
+ graphs, histogram, more words and contents in  boxed model, no empty space needed in site allow scroll every where.
+>choose where to apply ai and tell me. but this time no ai required cz am new in    this.
+>make sure u outlined and obeyed UML, ERD, DFD, and other useful platform.
+
+
+As Conclusion; it seems my opinion is well understood, but it is fewer than what I expect, because I want something bigger than those shortages of ideas. let this ideas be approximated as 50% and other 50 best functionality is yours. I hope you get the scope I want to engage.
+
